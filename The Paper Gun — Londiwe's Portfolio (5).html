@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Londiwe Hlongwa — Public Management &amp; Supply Chain Portfolio</title>
+  <meta name="description" content="Interactive portfolio of Londiwe Hlongwa, final-year Public Management and Supply Chain Management candidate based in Durban, South Africa." />
+
+  <!-- Typography: Instrument Serif (Google Fonts) + Clash Display & Cabinet Grotesk (Fontshare) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=cabinet-grotesk@400,500,700,800,900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       01. DESIGN TOKENS & BASE STYLES
+       ========================================================================== */
+    :root {
+      --bg: #FAFAFA;
+      --text: #111111;
+      --muted: #55555c;
+      --border: rgba(17, 17, 17, 0.1);
+      --card-bg: rgba(255, 255, 255, 0.88);
+      --pad-x: 48px;
+
+      --font-display: 'Clash Display', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-body: 'Cabinet Grotesk', system-ui, -apple-system, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      /* Subtle architectural dot grid for tactile depth */
+      background-image: radial-gradient(rgba(17, 17, 17, 0.065) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* ==========================================================================
+       02. NAVIGATION BAR (SECTION 1 OF 2)
+       ========================================================================== */
+    .site-header {
+      width: 100%;
+      padding: 24px var(--pad-x);
+      position: relative;
+      z-index: 40;
+    }
+
+    .nav-bar {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* Bubbly rounded black logo displaying "Londiwe" (112px desktop, 92px mobile) */
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      width: 112px;
+      flex-shrink: 0;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .brand-logo:hover {
+      transform: scale(1.04) rotate(-2deg);
+    }
+
+    .brand-logo svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-link-btn {
+      appearance: none;
+      background: transparent;
+      border: none;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.18s ease, transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+
+    .nav-link-btn:hover {
+      background-color: rgba(17, 17, 17, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .nav-link-btn:active {
+      transform: translateY(1px);
+    }
+
+    .nav-link-btn:focus-visible,
+    .keycap-btn:focus-visible,
+    .tray-slip:focus-visible,
+    .detail-close:focus-visible,
+    .detail-cta:focus-visible,
+    .gun-wrapper:focus-visible {
+      outline: 2px solid #3f6bff;
+      outline-offset: 3px;
+    }
+
+    /* White 3D keycap button "Let's Talk ↗" */
+    .nav-talk-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      height: 46px;
+      padding: 0 20px;
+      background: #ffffff;
+      color: var(--text);
+      border: 1.5px solid #18181b;
+      border-radius: 13px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      box-shadow: 0 6px 0 #18181b, 0 10px 20px rgba(0, 0, 0, 0.08);
+      transform: translateY(0);
+      transition: transform 0.14s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.14s ease, background-color 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .nav-talk-btn:hover {
+      background: #fffdf7;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 0 #18181b, 0 14px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-talk-btn:active {
+      transform: translateY(5px);
+      box-shadow: 0 1px 0 #18181b, 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ==========================================================================
+       03. HERO SECTION (SECTION 2 OF 2)
+       ========================================================================== */
+    .hero-section {
+      width: 100%;
+      padding: 20px var(--pad-x) 96px;
+      position: relative;
+    }
+
+    .hero-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      align-items: start;
+      gap: 24px;
+      position: relative;
+    }
+
+    /* Left Column */
+    .hero-left {
+      position: relative;
+      z-index: 20;
+      padding-top: 16px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .hero-kicker::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ff3b3f;
+      box-shadow: 0 0 0 3px rgba(255, 59, 63, 0.18);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(2.25rem, 3.85vw, 3.7rem);
+      line-height: 1.07;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      margin-bottom: 22px;
+      max-width: 18ch;
+    }
+
+    .hero-title .serif-italic {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.13em;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      padding-right: 2px;
+    }
+
+    .hero-subtext {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: clamp(1rem, 1.15vw, 1.125rem);
+      line-height: 1.58;
+      color: var(--muted);
+      max-width: 52ch;
+      margin-bottom: 32px;
+    }
+
+    /* Action Buttons & Counter Row */
+    .controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px 16px;
+    }
+
+    /* 54px tall, radius 14px, darker 7px keycap side, top-right legend, spring animation */
+    .keycap-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 54px;
+      padding: 0 24px;
+      border-radius: 14px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      transition: transform 0.14s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.14s ease, filter 0.15s ease;
+    }
+
+    .keycap-legend {
+      position: absolute;
+      top: 5px;
+      right: 8px;
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
+    /* Primary Spray Button */
+    .btn-spray {
+      background: linear-gradient(180deg, #ff4b4f 0%, #e61c24 100%);
+      color: #ffffff;
+      border: 1.5px solid #8f080e;
+      box-shadow: 0 7px 0 #8f080e, 0 14px 24px rgba(224, 20, 28, 0.25);
+      padding-right: 34px;
+    }
+
+    .btn-spray:hover {
+      filter: brightness(1.04);
+      transform: translateY(-2px);
+      box-shadow: 0 9px 0 #8f080e, 0 18px 28px rgba(224, 20, 28, 0.3);
+    }
+
+    .btn-spray:active,
+    .btn-spray.is-pressed {
+      transform: translateY(6px);
+      box-shadow: 0 1px 0 #8f080e, 0 4px 10px rgba(224, 20, 28, 0.2);
+    }
+
+    /* Secondary Clean Up Button */
+    .btn-clean {
+      background: #ffffff;
+      color: var(--text);
+      border: 1.5px solid #222226;
+      box-shadow: 0 7px 0 #222226, 0 12px 20px rgba(0, 0, 0, 0.07);
+      padding-right: 30px;
+    }
+
+    .btn-clean:hover {
+      background: #f5f5f7;
+      transform: translateY(-2px);
+      box-shadow: 0 9px 0 #222226, 0 16px 24px rgba(0, 0, 0, 0.09);
+    }
+
+    .btn-clean:active,
+    .btn-clean.is-pressed {
+      transform: translateY(6px);
+      box-shadow: 0 1px 0 #222226, 0 4px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .spray-counter {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--muted);
+      padding: 8px 14px;
+      background: rgba(17, 17, 17, 0.045);
+      border-radius: 999px;
+      border: 1px solid rgba(17, 17, 17, 0.07);
+      white-space: nowrap;
+    }
+
+    .spray-counter strong {
+      color: var(--text);
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ==========================================================================
+       04. PORTFOLIO TRAY (BELOW BUTTONS ON LEFT, ~46% PAGE WIDTH, 54PX BELOW)
+       ========================================================================== */
+    .portfolio-tray-wrap {
+      margin-top: 54px;
+      width: 46vw;
+      max-width: 660px;
+      min-width: 320px;
+      position: relative;
+      z-index: 25;
+    }
+
+    .tray-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .tray-label {
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 11.5px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .tray-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 10px;
+      min-height: 76px;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(17, 17, 17, 0.025);
+      border: 1.5px dashed rgba(17, 17, 17, 0.13);
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tray-container.has-items {
+      background: rgba(255, 255, 255, 0.65);
+      border-style: solid;
+      border-color: rgba(17, 17, 17, 0.09);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    }
+
+    .tray-empty-hint {
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #777780;
+      padding: 16px 8px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Tray Slip Items (~58px tall, hover lifts by 6px, twin hop 8px) */
+    .tray-slip {
+      height: 58px;
+      border-radius: 7px;
+      padding: 0 16px;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      border: 1px solid rgba(17, 17, 17, 0.12);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, opacity 0.3s ease;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .tray-slip.is-tag {
+      padding: 0 14px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .tray-slip:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.13);
+      z-index: 5;
+    }
+
+    .tray-slip.is-active {
+      outline: 2.5px solid #111111;
+      outline-offset: 2px;
+      transform: translateY(-4px);
+    }
+
+    .tray-slip.is-hopping {
+      animation: twinHop 0.36s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes twinHop {
+      0% { transform: translateY(0) scale(1); }
+      45% { transform: translateY(-8px) scale(1.05); }
+      100% { transform: translateY(0) scale(1); }
+    }
+
+    .tray-slip-title {
+      font-family: var(--font-body);
+      font-weight: 900;
+      font-size: 13.5px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .tray-slip.is-tag .tray-slip-title {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: none;
+      letter-spacing: 0.01em;
+    }
+
+    .tray-slip-sub {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 9.5px;
+      line-height: 1.2;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.78;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+
+    .tray-slip-count {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      min-width: 19px;
+      height: 19px;
+      padding: 0 5px;
+      border-radius: 999px;
+      background: #111111;
+      color: #ffffff;
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ==========================================================================
+       05. THE PAPER GUN (RIGHT COLUMN, ROTATED -16 DEG, RECOIL & TRIGGER)
+       ========================================================================== */
+    .hero-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+      z-index: 30;
+      padding-top: 10px;
+    }
+
+    .gun-stage {
+      width: min(52vw, 760px);
+      max-width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gun-wrapper {
+      width: 100%;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      transform: rotate(-16deg) translate3d(0, 0, 0);
+      transform-origin: 55% 50%;
+      filter: drop-shadow(0 28px 34px rgba(17, 17, 17, 0.2));
+      transition: transform 0.16s cubic-bezier(0.22, 1.45, 0.36, 1), filter 0.2s ease;
+      will-change: transform;
+    }
+
+    .gun-wrapper:hover {
+      filter: drop-shadow(0 32px 40px rgba(224, 20, 28, 0.24));
+    }
+
+    /* Kick back ~14px along barrel axis (up-right in rotated frame = +14px X) */
+    .gun-wrapper.is-recoiling {
+      transition: transform 0.045s ease-out;
+      transform: rotate(-16deg) translate3d(14px, -3px, 0);
+    }
+
+    #gun-trigger {
+      transform-box: fill-box;
+      transform-origin: 70% 15%;
+      transition: transform 0.09s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .gun-wrapper.is-firing #gun-trigger {
+      transform: rotate(22deg) translateX(4px);
+    }
+
+    .gun-hint-badge {
+      position: absolute;
+      bottom: 8px;
+      right: 12%;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(17, 17, 17, 0.1);
+      border-radius: 999px;
+      padding: 6px 13px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      pointer-events: none;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    /* ==========================================================================
+       06. FLYING PAPER SLIPS LAYER (FIXED OVERLAY, 3D PERSPECTIVE)
+       ========================================================================== */
+    .flying-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+      perspective: 950px;
+      overflow: hidden;
+    }
+
+    .flying-slip {
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-radius: 7px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 18px;
+      border: 1px solid rgba(17, 17, 17, 0.14);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16);
+      will-change: transform, opacity;
+      backface-visibility: visible;
+      transform-style: preserve-3d;
+    }
+
+    .flying-slip.big {
+      width: 220px;
+      height: 84px;
+    }
+
+    .flying-slip.tag {
+      width: 88px;
+      height: 64px;
+      padding: 0 8px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .flying-slip-title {
+      font-family: var(--font-body);
+      font-weight: 900;
+      font-size: 17px;
+      line-height: 1.08;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .flying-slip.tag .flying-slip-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      text-transform: none;
+      line-height: 1.15;
+    }
+
+    .flying-slip-sub {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 10.5px;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-top: 5px;
+    }
+
+    /* ==========================================================================
+       07. FROSTED DETAIL CARD (BOTTOM-RIGHT FIXED)
+       ========================================================================== */
+    .detail-card {
+      position: fixed;
+      right: 28px;
+      bottom: 28px;
+      width: min(410px, calc(100vw - 28px));
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1.5px solid rgba(17, 17, 17, 0.12);
+      border-radius: 20px;
+      padding: 24px 24px 22px;
+      box-shadow: 0 24px 54px rgba(17, 17, 17, 0.16), 0 4px 14px rgba(17, 17, 17, 0.06);
+      z-index: 60;
+      opacity: 0;
+      transform: translateY(20px) scale(0.97);
+      pointer-events: none;
+      transition: opacity 0.26s ease, transform 0.3s cubic-bezier(0.22, 1.35, 0.36, 1);
+    }
+
+    .detail-card.is-open {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .detail-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .detail-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .detail-swatch {
+      width: 11px;
+      height: 11px;
+      border-radius: 3px;
+      border: 1px solid rgba(17, 17, 17, 0.2);
+      flex-shrink: 0;
+    }
+
+    .detail-close {
+      appearance: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      border: 1px solid rgba(17, 17, 17, 0.12);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .detail-close:hover {
+      background: #111111;
+      color: #ffffff;
+      transform: scale(1.06);
+    }
+
+    .detail-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .detail-desc {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 1.55;
+      color: #33333a;
+      margin-bottom: 14px;
+    }
+
+    .detail-extra {
+      border-top: 1px solid rgba(17, 17, 17, 0.09);
+      padding-top: 13px;
+      margin-top: 12px;
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: #2c2c34;
+    }
+
+    .detail-extra h4 {
+      font-weight: 800;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .detail-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 5px;
+      margin-top: 6px;
+    }
+
+    .detail-list li {
+      position: relative;
+      padding-left: 14px;
+      font-weight: 500;
+    }
+
+    .detail-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #ff3b3f;
+      font-weight: 900;
+    }
+
+    .detail-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .detail-pill {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(17, 17, 17, 0.06);
+      color: var(--text);
+    }
+
+    .contact-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 12px 0 16px;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(17, 17, 17, 0.04);
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 13.5px;
+    }
+
+    .contact-row span.label {
+      font-weight: 800;
+      color: var(--muted);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .contact-row a,
+    .contact-row span.val {
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .contact-row a:hover {
+      text-decoration: underline;
+      color: #e0141c;
+    }
+
+    .detail-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 46px;
+      border-radius: 12px;
+      background: #111111;
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      box-shadow: 0 5px 0 #3f3f46;
+      transition: transform 0.14s ease, box-shadow 0.14s ease, background-color 0.15s ease;
+    }
+
+    .detail-cta:hover {
+      background: #232329;
+      transform: translateY(-2px);
+      box-shadow: 0 7px 0 #3f3f46;
+    }
+
+    .detail-cta:active {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 #3f3f46;
+    }
+
+    /* ==========================================================================
+       08. RESPONSIVE BREAKPOINTS (TABLET <= 1024PX, MOBILE <= 640PX)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      :root {
+        --pad-x: 24px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .hero-title {
+        max-width: 22ch;
+      }
+
+      .portfolio-tray-wrap {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin-top: 38px;
+      }
+
+      .hero-right {
+        justify-content: center;
+        order: 2;
+      }
+
+      .gun-stage {
+        width: min(74vw, 560px);
+      }
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --pad-x: 14px;
+      }
+
+      .site-header {
+        padding-top: 16px;
+        padding-bottom: 12px;
+      }
+
+      /* Mobile Nav: Logo & Let's Talk on row 1, nav links centered on row 2 */
+      .nav-bar {
+        flex-wrap: wrap;
+        row-gap: 12px;
+      }
+
+      .brand-logo {
+        width: 92px;
+        order: 1;
+      }
+
+      .nav-talk-btn {
+        order: 2;
+        height: 40px;
+        padding: 0 14px;
+        font-size: 13.5px;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 4px;
+        padding-top: 6px;
+        border-top: 1px solid rgba(17, 17, 17, 0.07);
+      }
+
+      .nav-link-btn {
+        font-size: 14.5px;
+        padding: 8px 12px;
+      }
+
+      /* Mobile Hero ordering: Heading/Intro -> Gun -> Controls & Tray */
+      .hero-section {
+        padding-top: 10px;
+        padding-bottom: 110px;
+      }
+
+      .hero-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .hero-left {
+        display: contents;
+      }
+
+      .hero-intro-block {
+        order: 1;
+      }
+
+      .hero-right {
+        order: 2;
+        width: 100%;
+        padding: 6px 0 4px;
+      }
+
+      .gun-stage {
+        width: min(88vw, 390px);
+      }
+
+      .gun-hint-badge {
+        font-size: 11px;
+        padding: 4px 10px;
+        bottom: 2px;
+        right: 6%;
+      }
+
+      .hero-actions-and-tray {
+        order: 3;
+        width: 100%;
+      }
+
+      .hero-title {
+        font-size: 2.05rem;
+        margin-bottom: 14px;
+      }
+
+      .hero-subtext {
+        font-size: 0.98rem;
+        margin-bottom: 8px;
+      }
+
+      .controls-row {
+        gap: 10px;
+      }
+
+      .keycap-btn {
+        height: 50px;
+        padding: 0 16px;
+        font-size: 14.5px;
+      }
+
+      .btn-spray {
+        padding-right: 26px;
+      }
+
+      .btn-clean {
+        padding-right: 22px;
+      }
+
+      .portfolio-tray-wrap {
+        margin-top: 32px;
+      }
+
+      .detail-card {
+        right: 14px;
+        left: 14px;
+        bottom: 14px;
+        width: auto;
+        max-height: 72vh;
+        padding: 20px 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gun-wrapper,
+      .tray-slip,
+      .keycap-btn,
+      .detail-card {
+        transition-duration: 0.08s !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ========================================================================
+       SECTION 1: NAVIGATION BAR
+       ======================================================================== -->
+  <header class="site-header">
+    <nav class="nav-bar" aria-label="Primary Navigation">
+      <!-- Bubbly rounded black logo displaying "Londiwe" -->
+      <a href="#top" class="brand-logo" id="brandLogo" aria-label="Londiwe Hlongwa Home">
+        <svg viewBox="0 0 224 68" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Londiwe">
+          <rect x="2" y="4" width="220" height="58" rx="29" fill="#111111" />
+          <rect x="6" y="7" width="212" height="50" rx="25" stroke="rgba(255,255,255,0.16)" stroke-width="1.5" />
+          <text x="112" y="43" text-anchor="middle" fill="#FFFFFF"
+                font-family="'Clash Display', 'Cabinet Grotesk', sans-serif"
+                font-weight="700" font-size="31" letter-spacing="-0.02em">Londiwe</text>
+        </svg>
+      </a>
+
+      <!-- Center Navigation Items: each fires a burst & opens matching detail card -->
+      <ul class="nav-links">
+        <li><button type="button" class="nav-link-btn" data-nav="work">Work</button></li>
+        <li><button type="button" class="nav-link-btn" data-nav="about">About</button></li>
+        <li><button type="button" class="nav-link-btn" data-nav="process">Process</button></li>
+        <li><button type="button" class="nav-link-btn" data-nav="contact">Contact</button></li>
+      </ul>
+
+      <!-- Right: White keycap button "Let's Talk ↗" -->
+      <a href="mailto:hlongwalondiwe14@gmail.com" class="nav-talk-btn" id="navTalkBtn">
+        <span>Let's Talk ↗</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ========================================================================
+       SECTION 2: HERO (LEFT INTRO + CONTROLS + TRAY / RIGHT 3D PAPER GUN)
+       ======================================================================== -->
+  <main class="hero-section" id="top">
+    <div class="hero-inner">
+      <!-- Left Column -->
+      <div class="hero-left">
+        <div class="hero-intro-block">
+          <p class="hero-kicker">PORTFOLIO · 2026</p>
+          <h1 class="hero-title">
+            Hi, I'm <span class="serif-italic">Londiwe,</span> a Public Management and Supply Chain candidate with a curious mind.
+          </h1>
+          <p class="hero-subtext">
+            I bring together administration, analytical thinking and digital skills to support efficient operations, accountable public service and creative problem-solving. Pull the trigger and discover my work.
+          </p>
+        </div>
+
+        <div class="hero-actions-and-tray">
+          <!-- Interactive Keycap Controls + Counter -->
+          <div class="controls-row">
+            <button type="button" class="keycap-btn btn-spray" id="sprayBtn" aria-label="Spray my work — hold to spray portfolio slips">
+              <span class="keycap-legend">HOLD</span>
+              <span>Spray my work</span>
+            </button>
+
+            <button type="button" class="keycap-btn btn-clean" id="cleanBtn" aria-label="Clean up all sprayed portfolio slips">
+              <span class="keycap-legend">ESC</span>
+              <span>Clean up</span>
+            </button>
+
+            <div class="spray-counter" aria-live="polite">
+              <strong id="sprayCount">0</strong> <span id="sprayCountLabel">slips sprayed</span>
+            </div>
+          </div>
+
+          <!-- Portfolio Tray -->
+          <section class="portfolio-tray-wrap" aria-label="Sprayed portfolio slips tray">
+            <div class="tray-header">
+              <span class="tray-label">WHAT CAME OUT · CLICK A SLIP</span>
+            </div>
+            <div class="tray-container" id="trayContainer" role="list">
+              <p class="tray-empty-hint" id="trayEmptyHint">Hold the trigger or “Spray my work” to launch portfolio slips...</p>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- Right Column: Large Red 3D Paper Money-Gun (Inline SVG Only) -->
+      <div class="hero-right">
+        <div class="gun-stage">
+          <div class="gun-wrapper" id="paperGun" role="button" tabindex="0" aria-label="Red 3D paper gun. Press and hold to spray Londiwe's portfolio slips">
+            <svg viewBox="0 0 760 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Red 3D Paper Gun labelled PORTFOLIO">
+              <defs>
+                <!-- Top lighter red face gradient: #ff5a5e to #ff3a40 -->
+                <linearGradient id="gunTopGrad" x1="120" y1="70" x2="640" y2="145" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#ff5a5e" />
+                  <stop offset="100%" stop-color="#ff3a40" />
+                </linearGradient>
+
+                <!-- Main side face gradient: #ff3b3f to #e0141c to #a50a10 -->
+                <linearGradient id="gunMainGrad" x1="160" y1="120" x2="650" y2="310" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#ff3b3f" />
+                  <stop offset="52%" stop-color="#e0141c" />
+                  <stop offset="100%" stop-color="#a50a10" />
+                </linearGradient>
+
+                <!-- Darker back & front bevel face gradient: #c00d14 to #7d050a -->
+                <linearGradient id="gunDarkGrad" x1="80" y1="120" x2="185" y2="300" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#c00d14" />
+                  <stop offset="100%" stop-color="#7d050a" />
+                </linearGradient>
+
+                <!-- Slanted Grip Main Face -->
+                <linearGradient id="gripMainGrad" x1="450" y1="275" x2="575" y2="475" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#e81922" />
+                  <stop offset="100%" stop-color="#9c080e" />
+                </linearGradient>
+
+                <!-- Slanted Grip Back Darker Face -->
+                <linearGradient id="gripBackGrad" x1="400" y1="275" x2="495" y2="475" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#b50b12" />
+                  <stop offset="100%" stop-color="#6e0408" />
+                </linearGradient>
+              </defs>
+
+              <!-- 1. TRIGGER GUARD LOOP (Behind trigger) -->
+              <path d="M350 282 L356 346 Q358 366 378 366 L446 366 L442 346 L384 346 Q375 346 374 336 L369 282 Z"
+                    fill="#9e080e" stroke="#6b0307" stroke-width="2" />
+              <path d="M353 282 L359 344 Q361 362 379 362 L444 362"
+                    stroke="rgba(255,255,255,0.28)" stroke-width="2" fill="none" />
+
+              <!-- 2. DARK RED TRIGGER (Rotates inward while firing) -->
+              <g id="gun-trigger">
+                <path d="M398 280 L424 280 C418 304 416 324 424 344 L401 347 C391 325 391 302 398 280 Z"
+                      fill="#7d050a" stroke="#4f0205" stroke-width="2" />
+                <path d="M402 284 C396 304 396 322 404 342"
+                      stroke="rgba(255,255,255,0.25)" stroke-width="2" stroke-linecap="round" />
+              </g>
+
+              <!-- 3. SLANTED RED GRIP -->
+              <!-- Grip darker back/left 3D face -->
+              <polygon points="418,282 462,282 518,468 468,468" fill="url(#gripBackGrad)" />
+              <!-- Grip main side face -->
+              <polygon points="462,282 574,282 634,468 518,468" fill="url(#gripMainGrad)" />
+              <!-- Grip base bevel -->
+              <polygon points="468,468 634,468 626,482 476,482" fill="#6b0307" />
+              <!-- Grip subtle panel groove & white highlight -->
+              <line x1="462" y1="284" x2="518" y2="466" stroke="rgba(255,255,255,0.42)" stroke-width="2.2" />
+              <line x1="569" y1="292" x2="624" y2="460" stroke="rgba(255,255,255,0.22)" stroke-width="2" />
+              <polygon points="494,325 546,325 584,442 532,442" fill="rgba(110, 4, 8, 0.22)" rx="6" />
+
+              <!-- 4. CHUNKY ANGULAR 3D BOX BODY -->
+              <!-- Top lighter red face (#ff5a5e to #ff3a40) -->
+              <polygon points="104,116 174,72 642,72 586,116" fill="url(#gunTopGrad)" />
+
+              <!-- Darker front/back 3D bevel face (#c00d14 to #7d050a) -->
+              <polygon points="104,116 174,116 174,284 104,264" fill="url(#gunDarkGrad)" />
+
+              <!-- Main side face (#ff3b3f to #e0141c to #a50a10) -->
+              <polygon points="174,116 642,116 642,284 174,284" fill="url(#gunMainGrad)" />
+
+              <!-- Rear dark cap edge -->
+              <polygon points="642,72 658,84 658,272 642,284" fill="#7d050a" />
+
+              <!-- Thin crisp white highlight along top edges -->
+              <polyline points="105,116 174,73 641,73" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.88" />
+              <line x1="174" y1="116" x2="641" y2="116" stroke="rgba(255,255,255,0.55)" stroke-width="2" />
+              <line x1="174" y1="116" x2="174" y2="283" stroke="rgba(255,255,255,0.24)" stroke-width="1.8" />
+
+              <!-- Two faint panel lines on main side face -->
+              <line x1="218" y1="118" x2="218" y2="282" stroke="rgba(90, 3, 7, 0.34)" stroke-width="2" />
+              <line x1="220" y1="118" x2="220" y2="282" stroke="rgba(255, 255, 255, 0.14)" stroke-width="1" />
+
+              <line x1="596" y1="118" x2="596" y2="282" stroke="rgba(90, 3, 7, 0.34)" stroke-width="2" />
+              <line x1="598" y1="118" x2="598" y2="282" stroke="rgba(255, 255, 255, 0.14)" stroke-width="1" />
+
+              <!-- Four dark rivets -->
+              <g fill="#590206">
+                <circle cx="196" cy="138" r="5.5" />
+                <circle cx="196" cy="262" r="5.5" />
+                <circle cx="620" cy="138" r="5.5" />
+                <circle cx="620" cy="262" r="5.5" />
+              </g>
+              <g fill="rgba(255,255,255,0.28)">
+                <circle cx="194.8" cy="136.8" r="1.8" />
+                <circle cx="194.8" cy="260.8" r="1.8" />
+                <circle cx="618.8" cy="136.8" r="1.8" />
+                <circle cx="618.8" cy="260.8" r="1.8" />
+              </g>
+
+              <!-- "PORTFOLIO" printed on the side in white Cabinet Grotesk 900 (~64px) -->
+              <text x="408" y="222" text-anchor="middle" fill="#FFFFFF"
+                    font-family="'Cabinet Grotesk', 'Clash Display', sans-serif"
+                    font-weight="900" font-size="62" letter-spacing="0.03em">PORTFOLIO</text>
+
+              <!-- 5. DARK PAPER SLOT AT THE FRONT (No paper sticking out) -->
+              <g id="gun-paper-slot">
+                <!-- Outer recessed slot housing -->
+                <polygon points="118,144 156,144 156,246 118,236" fill="#470104" stroke="#290002" stroke-width="2" />
+                <!-- Inner dark aperture where slips spawn -->
+                <polygon points="127,154 147,154 147,236 127,229" fill="#170203" />
+                <!-- Subtle metallic roller lip inside slot -->
+                <line x1="136" y1="156" x2="136" y2="231" stroke="rgba(255,255,255,0.16)" stroke-width="2" stroke-linecap="round" />
+              </g>
+            </svg>
+          </div>
+          <span class="gun-hint-badge">Click or hold gun to fire</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       FLYING PAPER SLIPS CONTAINER
+       ======================================================================== -->
+  <div class="flying-layer" id="flyingLayer" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       FROSTED DETAIL CARD (BOTTOM-RIGHT)
+       ======================================================================== -->
+  <aside class="detail-card" id="detailCard" role="dialog" aria-modal="false" aria-labelledby="detailTitle" aria-hidden="true">
+    <div class="detail-top">
+      <div class="detail-kicker">
+        <span class="detail-swatch" id="detailSwatch"></span>
+        <span id="detailKickerText">ACADEMIC FOCUS</span>
+      </div>
+      <button type="button" class="detail-close" id="detailCloseBtn" aria-label="Close detail card">&times;</button>
+    </div>
+    <h2 class="detail-title" id="detailTitle">Public Management</h2>
+    <p class="detail-desc" id="detailDesc"></p>
+    <div id="detailExtra"></div>
+  </aside>
+
+  <!-- ========================================================================
+       VANILLA JAVASCRIPT: PHYSICS ENGINE, COLOUR PALETTE, TRAY & CARDS
+       ======================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ----------------------------------------------------------------------
+         1. PERSONAL & PORTFOLIO DATA (STRICT PRIVACY & ACCURACY)
+         ---------------------------------------------------------------------- */
+      const COLOUR_PALETTE = [
+        { name: 'Pink',   bg: '#ff5fa8', fg: '#111111' },
+        { name: 'Yellow', bg: '#ffd23f', fg: '#111111' },
+        { name: 'Blue',   bg: '#3f6bff', fg: '#ffffff' },
+        { name: 'Mint',   bg: '#3fe0a8', fg: '#111111' },
+        { name: 'Orange', bg: '#ff8a2a', fg: '#111111' },
+        { name: 'Purple', bg: '#8b5cff', fg: '#ffffff' },
+        { name: 'Lime',   bg: '#c8f03c', fg: '#111111' },
+        { name: 'Sky',    bg: '#5cc8ff', fg: '#111111' },
+        { name: 'Black',  bg: '#1c1c22', fg: '#ffffff' },
+        { name: 'White',  bg: '#ffffff', fg: '#111111' }
+      ];
+
+      const EDUCATION_HTML = `
+        <div class="detail-extra">
+          <h4>Education</h4>
+          <p><strong>Diploma in Public Management</strong><br>
+          Mangosuthu University of Technology<br>
+          <span style="color:#55555c;font-weight:700;">2023–2026 · In Progress</span></p>
+          <p style="margin-top:8px;"><strong>Majors:</strong> Supply Chain Management and Public Management.</p>
+          <p style="margin-top:6px;"><strong>Relevant modules:</strong> Supply Chain Management, Public Finance, Fundamentals of Research, End User Computing and Public Management.</p>
+        </div>
+      `;
+
+      const PRO_SKILLS_HTML = `
+        <div class="detail-extra">
+          <h4>Professional Skills</h4>
+          <ul class="detail-list">
+            <li>Written and verbal communication</li>
+            <li>Problem-solving and critical thinking</li>
+            <li>Time management and punctuality</li>
+            <li>Adaptability and fast learning</li>
+            <li>Team collaboration</li>
+            <li>Emotional intelligence</li>
+          </ul>
+        </div>
+      `;
+
+      const DIGITAL_TOOLS_HTML = `
+        <div class="detail-extra">
+          <h4>Digital Tools</h4>
+          <div class="detail-pills">
+            <span class="detail-pill">Microsoft Office: Excel &amp; Word</span>
+            <span class="detail-pill">Google Workspace</span>
+            <span class="detail-pill">Microsoft Teams</span>
+            <span class="detail-pill">Zoom</span>
+            <span class="detail-pill">Blackboard</span>
+            <span class="detail-pill">Asynchronous collaboration tools</span>
+          </div>
+        </div>
+      `;
+
+      const CONTACT_CARD_HTML = `
+        <div class="contact-rows">
+          <div class="contact-row">
+            <span class="label">Location</span>
+            <span class="val">Durban, South Africa</span>
+          </div>
+          <div class="contact-row">
+            <span class="label">Email</span>
+            <a href="mailto:hlongwalondiwe14@gmail.com">hlongwalondiwe14@gmail.com</a>
+          </div>
+          <div class="contact-row">
+            <span class="label">Phone</span>
+            <a href="tel:+27714955045">+27 71 495 5045</a>
+          </div>
+          <div class="contact-row">
+            <span class="label">LinkedIn</span>
+            <span class="val">Londiwe Hlongwa</span>
+          </div>
+        </div>
+        <a href="mailto:hlongwalondiwe14@gmail.com" class="detail-cta">Email Londiwe ↗</a>
+      `;
+
+      /* 9 Big Slips */
+      const BIG_SLIPS = [
+        {
+          id: 'big-public-management',
+          kind: 'big',
+          title: 'Public Management',
+          sub: 'Academic Focus',
+          cardKicker: 'Academic Focus',
+          cardTitle: 'Public Management',
+          cardDesc: 'Exploring public management, service delivery and effective administration.',
+          extraHtml: EDUCATION_HTML
+        },
+        {
+          id: 'big-supply-chain',
+          kind: 'big',
+          title: 'Supply Chain',
+          sub: 'Academic Focus',
+          cardKicker: 'Academic Focus',
+          cardTitle: 'Supply Chain',
+          cardDesc: 'Understanding procurement processes, supply chain operations and compliance.',
+          extraHtml: EDUCATION_HTML
+        },
+        {
+          id: 'big-procurement',
+          kind: 'big',
+          title: 'Procurement',
+          sub: 'Project 01',
+          cardKicker: 'Project 01',
+          cardTitle: 'Procurement',
+          cardDesc: 'Applied supply chain frameworks to analyse public-sector procurement flows, review compliance and identify bottlenecks.',
+          extraHtml: `
+            <div class="detail-extra">
+              <h4>Key Competencies Applied</h4>
+              <ul class="detail-list">
+                <li>Public-sector procurement cycle &amp; statutory compliance review</li>
+                <li>Workflow bottleneck identification &amp; operational efficiency</li>
+                <li>Structured reporting &amp; spreadsheet documentation</li>
+              </ul>
+            </div>
+          `
+        },
+        {
+          id: 'big-public-finance',
+          kind: 'big',
+          title: 'Public Finance',
+          sub: 'Project 02',
+          cardKicker: 'Project 02',
+          cardTitle: 'Public Finance',
+          cardDesc: 'Conducted academic research on financial accountability and resource allocation in the public sector.',
+          extraHtml: `
+            <div class="detail-extra">
+              <h4>Key Competencies Applied</h4>
+              <ul class="detail-list">
+                <li>Budget management &amp; public-sector resource allocation analysis</li>
+                <li>Financial accountability &amp; transparent governance principles</li>
+                <li>Remote/hybrid peer collaboration &amp; structured virtual presentations</li>
+              </ul>
+            </div>
+          `
+        },
+        {
+          id: 'big-research',
+          kind: 'big',
+          title: 'Research',
+          sub: 'Academic Skills',
+          cardKicker: 'Academic Skills',
+          cardTitle: 'Research',
+          cardDesc: 'Developing structured research, reports and evidence-based analysis.',
+          extraHtml: PRO_SKILLS_HTML
+        },
+        {
+          id: 'big-administration',
+          kind: 'big',
+          title: 'Administration',
+          sub: 'Core Skills',
+          cardKicker: 'Core Skills',
+          cardTitle: 'Administration',
+          cardDesc: 'Preparing organised reports, spreadsheets and administrative documentation.',
+          extraHtml: PRO_SKILLS_HTML
+        },
+        {
+          id: 'big-digital-skills',
+          kind: 'big',
+          title: 'Digital Skills',
+          sub: 'Remote Ready',
+          cardKicker: 'Remote Ready',
+          cardTitle: 'Digital Skills',
+          cardDesc: 'Using digital tools and cloud collaboration platforms to support efficient work.',
+          extraHtml: DIGITAL_TOOLS_HTML
+        },
+        {
+          id: 'big-londiwe',
+          kind: 'big',
+          title: 'Londiwe',
+          sub: 'Vibe Builder',
+          cardKicker: 'Vibe Builder · Durban, South Africa',
+          cardTitle: 'Londiwe Hlongwa',
+          cardDesc: 'A curious and detail-oriented Public Management and Supply Chain candidate.',
+          extraHtml: EDUCATION_HTML + PRO_SKILLS_HTML
+        },
+        {
+          id: 'big-lets-talk',
+          kind: 'big',
+          title: "Let's Talk",
+          sub: 'Contact',
+          cardKicker: "LET'S CONNECT",
+          cardTitle: 'Have a project or opportunity?',
+          cardDesc: "I'm interested in remote opportunities, administration, supply chain support and projects where I can apply my analytical and digital skills.",
+          extraHtml: CONTACT_CARD_HTML
+        }
+      ];
+
+      /* 16 Small Tag Slips (every 4th shot fires a tag) */
+      const TAG_DEFINITIONS = [
+        { title: 'Public Management', desc: 'Core major in Diploma in Public Management at Mangosuthu University of Technology (2023–2026), focused on accountable public service delivery.', extra: EDUCATION_HTML },
+        { title: 'Supply Chain', desc: 'Core major covering procurement cycles, logistics coordination, asset tracking, and statutory compliance.', extra: EDUCATION_HTML },
+        { title: 'Procurement', desc: 'Analysing public-sector procurement flows, reviewing compliance standards, and identifying operational bottlenecks.', extra: PRO_SKILLS_HTML },
+        { title: 'Public Finance', desc: 'Academic focus on budget management, public-sector financial accountability, and equitable resource allocation.', extra: EDUCATION_HTML },
+        { title: 'Research', desc: 'Grounded in Fundamentals of Research — producing structured academic reports and evidence-based analysis.', extra: PRO_SKILLS_HTML },
+        { title: 'Administration', desc: 'Organised administrative documentation, record keeping, and structured reporting for efficient operations.', extra: PRO_SKILLS_HTML },
+        { title: 'MS Office', desc: 'Proficient in Microsoft Office Suite (Excel and Word) developed through End User Computing and academic projects.', extra: DIGITAL_TOOLS_HTML },
+        { title: 'Excel', desc: 'Building organised data spreadsheets, budget tracking tables, and structured operational records in Microsoft Excel.', extra: DIGITAL_TOOLS_HTML },
+        { title: 'Word', desc: 'Drafting clean, well-formatted academic reports, policy briefs, and administrative documents in Microsoft Word.', extra: DIGITAL_TOOLS_HTML },
+        { title: 'Google Workspace', desc: 'Cloud-first document creation, shared spreadsheets, and real-time collaborative workflows.', extra: DIGITAL_TOOLS_HTML },
+        { title: 'Teams', desc: 'Virtual meetings, channel coordination, and collaborative project delivery using Microsoft Teams.', extra: DIGITAL_TOOLS_HTML },
+        { title: 'Zoom', desc: 'Delivering structured virtual presentations and participating in remote team discussions via Zoom.', extra: DIGITAL_TOOLS_HTML },
+        { title: 'Digital Skills', desc: 'Remote-ready digital fluency across office productivity suites, Blackboard LMS, and asynchronous collaboration tools.', extra: DIGITAL_TOOLS_HTML },
+        { title: 'Remote Work', desc: 'Equipped for global remote roles with strong self-management, punctuality, and cloud collaboration habits.', extra: DIGITAL_TOOLS_HTML },
+        { title: 'Communication', desc: 'Clear written and verbal communication tailored for professional reports, team alignment, and stakeholder support.', extra: PRO_SKILLS_HTML },
+        { title: 'Problem-Solving', desc: 'Analytical thinking and critical evaluation applied to operational workflows and public-sector challenges.', extra: PRO_SKILLS_HTML }
+      ];
+
+      const TAG_SLIPS = TAG_DEFINITIONS.map((t, idx) => ({
+        id: 'tag-' + idx + '-' + t.title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+        kind: 'tag',
+        title: t.title,
+        sub: '',
+        cardKicker: 'Skill & Capability',
+        cardTitle: t.title,
+        cardDesc: t.desc,
+        extraHtml: t.extra
+      }));
+
+      const ALL_SLIPS_MAP = new Map();
+      [...BIG_SLIPS, ...TAG_SLIPS].forEach(item => ALL_SLIPS_MAP.set(item.id, item));
+
+      /* Navigation Burst Mapping */
+      const NAV_PRESETS = {
+        work: {
+          burstIds: ['big-procurement', 'big-public-finance', 'big-supply-chain', 'big-public-management'],
+          openId: 'big-procurement'
+        },
+        about: {
+          burstIds: ['big-londiwe', 'big-public-management', 'big-administration', 'big-research'],
+          openId: 'big-londiwe'
+        },
+        process: {
+          burstIds: ['big-digital-skills', 'big-research', 'big-administration', 'tag-7-excel', 'tag-9-google-workspace'],
+          openId: 'big-digital-skills'
+        },
+        contact: {
+          burstIds: ['big-lets-talk', 'tag-13-remote-work', 'tag-14-communication'],
+          openId: 'big-lets-talk'
+        }
+      };
+
+      /* ----------------------------------------------------------------------
+         2. DOM REFERENCES & STATE
+         ---------------------------------------------------------------------- */
+      const paperGun = document.getElementById('paperGun');
+      const gunPaperSlot = document.getElementById('gun-paper-slot');
+      const sprayBtn = document.getElementById('sprayBtn');
+      const cleanBtn = document.getElementById('cleanBtn');
+      const sprayCountEl = document.getElementById('sprayCount');
+      const sprayCountLabelEl = document.getElementById('sprayCountLabel');
+      const trayContainer = document.getElementById('trayContainer');
+      const trayEmptyHint = document.getElementById('trayEmptyHint');
+      const flyingLayer = document.getElementById('flyingLayer');
+
+      const detailCard = document.getElementById('detailCard');
+      const detailSwatch = document.getElementById('detailSwatch');
+      const detailKickerText = document.getElementById('detailKickerText');
+      const detailTitle = document.getElementById('detailTitle');
+      const detailDesc = document.getElementById('detailDesc');
+      const detailExtra = document.getElementById('detailExtra');
+      const detailCloseBtn = document.getElementById('detailCloseBtn');
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const FIRE_INTERVAL_MS = prefersReducedMotion ? 240 : 85;
+
+      let totalShots = 0;
+      let bigDeckIndex = 0;
+      let tagDeckIndex = 0;
+      let bigDeck = shuffle([...BIG_SLIPS]);
+      let tagDeck = shuffle([...TAG_SLIPS]);
+
+      /* Maps slip.id -> assigned colour object from COLOUR_PALETTE */
+      const assignedColours = new Map();
+      let nextColourIdx = 0;
+
+      /* Maps slip.id -> { item, el, count, countBadge } in tray */
+      const trayEntries = new Map();
+
+      /* Active flying particles */
+      const activeParticles = new Set();
+
+      /* Continuous firing state */
+      let isFiring = false;
+      let fireTimer = null;
+      let recoilTimeout = null;
+      let activeCardSlipId = null;
+
+      /* ----------------------------------------------------------------------
+         3. UTILITY FUNCTIONS
+         ---------------------------------------------------------------------- */
+      function shuffle(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      }
+
+      function getColourForSlip(slipId) {
+        if (!assignedColours.has(slipId)) {
+          const colour = COLOUR_PALETTE[nextColourIdx % COLOUR_PALETTE.length];
+          assignedColours.set(slipId, colour);
+          nextColourIdx++;
+        }
+        return assignedColours.get(slipId);
+      }
+
+      function getNextSlipItem() {
+        const nextShotNum = totalShots + 1;
+        /* Every fourth shot fires a small tag slip */
+        if (nextShotNum % 4 === 0) {
+          if (tagDeckIndex >= tagDeck.length) {
+            tagDeck = shuffle([...TAG_SLIPS]);
+            tagDeckIndex = 0;
+          }
+          return tagDeck[tagDeckIndex++];
+        } else {
+          if (bigDeckIndex >= bigDeck.length) {
+            bigDeck = shuffle([...BIG_SLIPS]);
+            bigDeckIndex = 0;
+          }
+          return bigDeck[bigDeckIndex++];
+        }
+      }
+
+      function getSlotOrigin() {
+        const rect = gunPaperSlot.getBoundingClientRect();
+        return {
+          x: rect.left + rect.width * 0.45,
+          y: rect.top + rect.height * 0.5
+        };
+      }
+
+      function updateCounter() {
+        sprayCountEl.textContent = String(totalShots);
+        sprayCountLabelEl.textContent = totalShots === 1 ? 'slip sprayed' : 'slips sprayed';
+      }
+
+      /* ----------------------------------------------------------------------
+         4. TRAY MANAGEMENT & DEDUPLICATION
+         ---------------------------------------------------------------------- */
+      function ensureTrayPlaceholder(item, colour) {
+        if (trayEntries.has(item.id)) {
+          return trayEntries.get(item.id);
+        }
+
+        if (trayEmptyHint && trayEmptyHint.parentNode) {
+          trayEmptyHint.remove();
+        }
+        trayContainer.classList.add('has-items');
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'tray-slip ' + (item.kind === 'tag' ? 'is-tag' : 'is-big');
+        btn.setAttribute('role', 'listitem');
+        btn.setAttribute('aria-label', `${item.title}${item.sub ? ' — ' + item.sub : ''}. Click for details`);
+        btn.style.backgroundColor = colour.bg;
+        btn.style.color = colour.fg;
+        /* Keep invisible until the first flying slip lands on it */
+        btn.style.opacity = '0';
+
+        const titleSpan = document.createElement('span');
+        titleSpan.className = 'tray-slip-title';
+        titleSpan.textContent = item.title;
+        btn.appendChild(titleSpan);
+
+        if (item.kind === 'big' && item.sub) {
+          const subSpan = document.createElement('span');
+          subSpan.className = 'tray-slip-sub';
+          subSpan.textContent = item.sub;
+          btn.appendChild(subSpan);
+        }
+
+        const countBadge = document.createElement('span');
+        countBadge.className = 'tray-slip-count';
+        countBadge.style.display = 'none';
+        btn.appendChild(countBadge);
+
+        btn.addEventListener('click', () => {
+          openDetailCard(item.id);
+        });
+
+        trayContainer.appendChild(btn);
+
+        const entry = {
+          item,
+          el: btn,
+          count: 0,
+          landedOnce: false,
+          countBadge
+        };
+        trayEntries.set(item.id, entry);
+        return entry;
+      }
+
+      function onSlipLandedInTray(item) {
+        const entry = trayEntries.get(item.id);
+        if (!entry) return;
+
+        entry.count += 1;
+
+        if (!entry.landedOnce) {
+          entry.landedOnce = true;
+          entry.el.style.opacity = '1';
+        } else {
+          /* Repeated slip glides onto existing twin, fades out, and makes twin hop 8px */
+          entry.countBadge.textContent = '×' + entry.count;
+          entry.countBadge.style.display = 'flex';
+          entry.el.classList.remove('is-hopping');
+          void entry.el.offsetWidth;
+          entry.el.classList.add('is-hopping');
+        }
+      }
+
+      /* ----------------------------------------------------------------------
+         5. PAPER GUN FIRING & BALLISTIC FLIGHT PHYSICS
+         ---------------------------------------------------------------------- */
+      function triggerGunRecoil() {
+        paperGun.classList.remove('is-recoiling');
+        void paperGun.offsetWidth;
+        paperGun.classList.add('is-recoiling', 'is-firing');
+
+        clearTimeout(recoilTimeout);
+        recoilTimeout = setTimeout(() => {
+          paperGun.classList.remove('is-recoiling');
+          if (!isFiring) {
+            paperGun.classList.remove('is-firing');
+          }
+        }, 75);
+      }
+
+      function fireSingleSlip(forcedItem = null) {
+        totalShots += 1;
+        updateCounter();
+        triggerGunRecoil();
+
+        const item = forcedItem || getNextSlipItem();
+        const colour = getColourForSlip(item.id);
+
+        /* Reserve tray slot in exact order of first appearance */
+        const trayEntry = ensureTrayPlaceholder(item, colour);
+
+        /* Create flying DOM slip */
+        const el = document.createElement('div');
+        el.className = 'flying-slip ' + (item.kind === 'tag' ? 'tag' : 'big');
+        el.style.backgroundColor = colour.bg;
+        el.style.color = colour.fg;
+
+        const titleEl = document.createElement('div');
+        titleEl.className = 'flying-slip-title';
+        titleEl.textContent = item.title;
+        el.appendChild(titleEl);
+
+        if (item.kind === 'big' && item.sub) {
+          const subEl = document.createElement('div');
+          subEl.className = 'flying-slip-sub';
+          subEl.textContent = item.sub;
+          el.appendChild(subEl);
+        }
+
+        flyingLayer.appendChild(el);
+
+        const origin = getSlotOrigin();
+        const flightW = item.kind === 'tag' ? 88 : 220;
+        const flightH = item.kind === 'tag' ? 64 : 84;
+
+        /* Random launch angle between 150° and 190° (left and slightly down) */
+        const angleDeg = 150 + Math.random() * 40;
+        const angleRad = (angleDeg * Math.PI) / 180;
+        const speed = (prefersReducedMotion ? 340 : 540) + Math.random() * 260;
+
+        /* Note: in screen coordinates (+Y is down), sin(150°)=+0.5 (down), cos(150°)=-0.866 (left) */
+        const vx = Math.cos(angleRad) * speed;
+        const vy = Math.sin(angleRad) * speed - (60 + Math.random() * 70);
+
+        const particle = {
+          el,
+          item,
+          trayEntry,
+          x: origin.x - flightW * 0.5,
+          y: origin.y - flightH * 0.5,
+          vx,
+          vy,
+          flightW,
+          flightH,
+          rotZ: (Math.random() - 0.5) * 44,
+          vRotZ: (Math.random() - 0.5) * 280,
+          rotX: (Math.random() - 0.5) * 50,
+          vRotX: (Math.random() > 0.5 ? 1 : -1) * (240 + Math.random() * 260),
+          flutterPhase: Math.random() * Math.PI * 2,
+          flutterFreq: 7 + Math.random() * 5,
+          flutterAmp: 55 + Math.random() * 45,
+          elapsed: 0,
+          flightDuration: prefersReducedMotion
+            ? (0.35 + Math.random() * 0.15)
+            : (0.7 + Math.random() * 0.4),
+          phase: 'flight', // 'flight' -> 'glide' -> 'done'
+          glideElapsed: 0,
+          glideDuration: prefersReducedMotion ? 0.35 : 0.7,
+          glideStartX: 0,
+          glideStartY: 0,
+          glideStartRotZ: 0,
+          glideStartRotX: 0,
+          cancelled: false
+        };
+
+        activeParticles.add(particle);
+      }
+
+      /* Main animation loop for flying & gliding slips */
+      let lastFrameTime = performance.now();
+
+      function stepParticles(now) {
+        const dt = Math.min((now - lastFrameTime) / 1000, 0.05);
+        lastFrameTime = now;
+
+        activeParticles.forEach(p => {
+          if (p.cancelled) {
+            if (p.el.parentNode) p.el.remove();
+            activeParticles.delete(p);
+            return;
+          }
+
+          if (p.phase === 'flight') {
+            p.elapsed += dt;
+
+            /* Gravity, horizontal air drag, and capped falling speed */
+            const drag = Math.pow(0.26, dt);
+            p.vx *= drag;
+            p.vy += 680 * dt;
+            if (p.vy > 340) p.vy = 340;
+
+            /* Sideways sine-wave flutter */
+            const flutterVx = Math.sin(p.elapsed * p.flutterFreq + p.flutterPhase) * p.flutterAmp;
+
+            p.x += (p.vx + flutterVx) * dt;
+            p.y += p.vy * dt;
+            p.rotZ += p.vRotZ * dt;
+            p.rotX += p.vRotX * dt;
+
+            p.el.style.transform = `translate3d(${p.x.toFixed(1)}px, ${p.y.toFixed(1)}px, 0) rotateZ(${p.rotZ.toFixed(1)}deg) rotateX(${p.rotX.toFixed(1)}deg)`;
+
+            if (p.elapsed >= p.flightDuration) {
+              p.phase = 'glide';
+              p.glideElapsed = 0;
+              p.glideStartX = p.x;
+              p.glideStartY = p.y;
+              /* Normalize rotZ to nearest multiple of 360 for clean untwist to 0° */
+              p.glideStartRotZ = ((p.rotZ % 360) + 540) % 360 - 180;
+              p.glideStartRotX = ((p.rotX % 360) + 540) % 360 - 180;
+            }
+          } else if (p.phase === 'glide') {
+            p.glideElapsed += dt;
+            const rawT = Math.min(p.glideElapsed / p.glideDuration, 1);
+            /* Smooth cubic ease-out */
+            const easeOut = 1 - Math.pow(1 - rawT, 3);
+
+            /* Dynamically read tray target rect (handles window resize mid-glide) */
+            const targetRect = p.trayEntry.el.getBoundingClientRect();
+            const scaleX = targetRect.width / p.flightW;
+            const scaleY = targetRect.height / p.flightH;
+
+            /* Center-to-center interpolation so scaling aligns accurately with tray slot */
+            const startCenterX = p.glideStartX + p.flightW * 0.5;
+            const startCenterY = p.glideStartY + p.flightH * 0.5;
+            const targetCenterX = targetRect.left + targetRect.width * 0.5;
+            const targetCenterY = targetRect.top + targetRect.height * 0.5;
+
+            const curCenterX = startCenterX + (targetCenterX - startCenterX) * easeOut;
+            const curCenterY = startCenterY + (targetCenterY - startCenterY) * easeOut;
+            const curX = curCenterX - p.flightW * 0.5;
+            const curY = curCenterY - p.flightH * 0.5;
+
+            const curRotZ = p.glideStartRotZ * (1 - easeOut);
+            const curRotX = p.glideStartRotX * (1 - easeOut);
+            const curScaleX = 1 + (scaleX - 1) * easeOut;
+            const curScaleY = 1 + (scaleY - 1) * easeOut;
+
+            /* If this slip is a duplicate twin, fade out smoothly near the end */
+            if (p.trayEntry.landedOnce && rawT > 0.45) {
+              const fade = 1 - (rawT - 0.45) / 0.55;
+              p.el.style.opacity = Math.max(0, fade).toFixed(2);
+            }
+
+            p.el.style.transform = `translate3d(${curX.toFixed(1)}px, ${curY.toFixed(1)}px, 0) rotateZ(${curRotZ.toFixed(1)}deg) rotateX(${curRotX.toFixed(1)}deg) scale(${curScaleX.toFixed(3)}, ${curScaleY.toFixed(3)})`;
+
+            if (rawT >= 1) {
+              p.phase = 'done';
+              onSlipLandedInTray(p.item);
+              if (p.el.parentNode) p.el.remove();
+              activeParticles.delete(p);
+            }
+          }
+        });
+
+        requestAnimationFrame(stepParticles);
+      }
+
+      requestAnimationFrame(stepParticles);
+
+      /* ----------------------------------------------------------------------
+         6. CONTINUOUS HOLD SPRAYING & BURST HELPERS
+         ---------------------------------------------------------------------- */
+      function startFiring() {
+        if (isFiring) return;
+        isFiring = true;
+        sprayBtn.classList.add('is-pressed');
+        paperGun.classList.add('is-firing');
+
+        fireSingleSlip();
+        fireTimer = setInterval(() => {
+          if (isFiring) {
+            fireSingleSlip();
+          }
+        }, FIRE_INTERVAL_MS);
+      }
+
+      function stopFiring() {
+        if (!isFiring) return;
+        isFiring = false;
+        sprayBtn.classList.remove('is-pressed');
+        paperGun.classList.remove('is-firing');
+        clearInterval(fireTimer);
+        fireTimer = null;
+      }
+
+      function fireBurst(count, intervalMs, specificIds = null) {
+        for (let i = 0; i < count; i++) {
+          setTimeout(() => {
+            if (specificIds && specificIds[i]) {
+              const item = ALL_SLIPS_MAP.get(specificIds[i]);
+              if (item) {
+                fireSingleSlip(item);
+                return;
+              }
+            }
+            fireSingleSlip();
+          }, i * intervalMs);
+        }
+      }
+
+      function cleanUpAll() {
+        stopFiring();
+        closeDetailCard();
+
+        /* Fade out any flying particles */
+        activeParticles.forEach(p => {
+          p.el.style.transition = 'opacity 0.25s ease';
+          p.el.style.opacity = '0';
+          setTimeout(() => {
+            p.cancelled = true;
+          }, 260);
+        });
+
+        /* Fade out tray slips and reset tray */
+        const existingSlips = Array.from(trayContainer.querySelectorAll('.tray-slip'));
+        existingSlips.forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'scale(0.9)';
+        });
+
+        setTimeout(() => {
+          trayEntries.clear();
+          trayContainer.innerHTML = '';
+          trayContainer.classList.remove('has-items');
+          if (trayEmptyHint) {
+            trayContainer.appendChild(trayEmptyHint);
+          }
+          totalShots = 0;
+          updateCounter();
+        }, 260);
+      }
+
+      /* ----------------------------------------------------------------------
+         7. FROSTED DETAIL CARD LOGIC
+         ---------------------------------------------------------------------- */
+      function openDetailCard(slipId) {
+        const item = ALL_SLIPS_MAP.get(slipId);
+        if (!item) return;
+
+        const colour = getColourForSlip(item.id);
+        activeCardSlipId = slipId;
+
+        detailSwatch.style.backgroundColor = colour.bg;
+        detailKickerText.textContent = item.cardKicker;
+        detailTitle.textContent = item.cardTitle;
+        detailDesc.textContent = item.cardDesc;
+        detailExtra.innerHTML = item.extraHtml || '';
+
+        /* Highlight active slip in tray */
+        trayEntries.forEach((entry, id) => {
+          entry.el.classList.toggle('is-active', id === slipId);
+        });
+
+        detailCard.classList.add('is-open');
+        detailCard.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeDetailCard() {
+        activeCardSlipId = null;
+        detailCard.classList.remove('is-open');
+        detailCard.setAttribute('aria-hidden', 'true');
+        trayEntries.forEach(entry => entry.el.classList.remove('is-active'));
+      }
+
+      /* ----------------------------------------------------------------------
+         8. EVENT LISTENERS (POINTER, KEYBOARD, NAV, RESIZE)
+         ---------------------------------------------------------------------- */
+      /* Hold "Spray my work" button */
+      sprayBtn.addEventListener('pointerdown', e => {
+        if (e.button !== 0 && e.pointerType === 'mouse') return;
+        e.preventDefault();
+        startFiring();
+      });
+
+      /* Hold the 3D Paper Gun */
+      paperGun.addEventListener('pointerdown', e => {
+        if (e.button !== 0 && e.pointerType === 'mouse') return;
+        e.preventDefault();
+        startFiring();
+      });
+
+      window.addEventListener('pointerup', stopFiring);
+      window.addEventListener('pointercancel', stopFiring);
+      window.addEventListener('blur', stopFiring);
+
+      /* Clean Up Button */
+      cleanBtn.addEventListener('click', cleanUpAll);
+
+      /* Close Detail Card */
+      detailCloseBtn.addEventListener('click', closeDetailCard);
+
+      /* Navigation Links: fire related burst & open matching detail card */
+      document.querySelectorAll('.nav-link-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const key = btn.getAttribute('data-nav');
+          const preset = NAV_PRESETS[key];
+          if (!preset) return;
+
+          fireBurst(preset.burstIds.length, prefersReducedMotion ? 160 : 95, preset.burstIds);
+          openDetailCard(preset.openId);
+        });
+      });
+
+      /* Keyboard controls: Hold Space to spray, Escape to close detail card */
+      window.addEventListener('keydown', e => {
+        if (e.code === 'Space') {
+          const activeTag = document.activeElement ? document.activeElement.tagName : '';
+          /* Prevent spacebar scroll and fire gun unless focused on a nav/close link */
+          if (activeTag !== 'A' && document.activeElement !== cleanBtn && document.activeElement !== detailCloseBtn) {
+            e.preventDefault();
+            if (!e.repeat) {
+              startFiring();
+            }
+          }
+        } else if (e.code === 'Escape') {
+          if (detailCard.classList.contains('is-open')) {
+            closeDetailCard();
+          }
+        }
+      });
+
+      window.addEventListener('keyup', e => {
+        if (e.code === 'Space') {
+          stopFiring();
+        }
+      });
+
+      /* Recalculate tray layout cleanly on resize */
+      window.addEventListener('resize', () => {
+        trayContainer.style.transform = 'translateZ(0)';
+      });
+
+      /* ----------------------------------------------------------------------
+         9. AUTO-BURST ON PAGE LOAD (0.7s DELAY, 20 SLIPS, 95ms APART)
+         ---------------------------------------------------------------------- */
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const count = prefersReducedMotion ? 8 : 20;
+          const interval = prefersReducedMotion ? 160 : 95;
+          fireBurst(count, interval);
+        }, 700);
+      });
+    })();
+  </script>
+</body>
+</html>
